@@ -34,3 +34,4 @@ do
         fi
 done
 
+echo "Minimum Difference is 2"
