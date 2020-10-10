@@ -1,27 +1,36 @@
 #!/bin/bash -x
 
-echo "Welcome To Flip Coin Simulation Problem"
-
 headcount=0
 tailcount=0
+count=0
 
-while [[ $headcount -ne 10 && $tailcount -ne 11 ]]
+while [[ $headcount -ne 21 && $tailcount -ne 21 ]]
 do
-	coinoutput=$((RANDOM % 2))
-	if [[ $coinoutput -eq 1 ]]
-	then
-		((headcount++))
-	else
-		((tailcount++))
-	fi
+        coinoutput=$((RANDOM % 2))
+        if [[ $coinoutput -eq 1 ]]
+        then
+                ((headcount++))
 
-	if [[ $headcount -eq 10 ]]
-	then
-		echo "Head count 10..Head Is Won"
+        else
+                ((tailcount++))
 
-	elif [[ $tailcount -eq 10 ]]
-	then
-		echo "Tail count 10.. Tail Is Won"
-		exit
-	fi
+        fi
+
+        if [[ $headcount -eq 21 ]]
+        then
+                count1=$(($headcount-$tailcount ))
+                echo "Head count 21 ..Head Won"
+                echo "Head Won by $count1"
+
+        elif [[ $tailcount -eq 21 ]]
+        then
+                count2=$(($tailcount-$headcount ))
+                echo "Tail Count 21..Tail Won"
+                echo "Tail Won by $count2"
+
+        elif [[ $headcount -eq $tailcount ]]
+        then
+                echo "Tie condition"
+        fi
 done
+
